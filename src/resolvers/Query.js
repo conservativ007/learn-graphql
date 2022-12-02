@@ -1,5 +1,34 @@
 export const Query = {
-  products: (parent, args, { products }) => {
+  products: (parent, { filter }, { products, reviews }) => {
+    // console.log(filter);
+    console.log(reviews);
+
+    if (filter) {
+      const { onSale, avgRating } = filter;
+
+      if (onSale === true) {
+        products = products.filter((product) => product.onSale);
+      }
+
+      if ([1, 2, 3, 4, 5].includes(avgRating)) {
+        products = products.filter((product) => {
+          let sumRating = 0;
+          let numberOfReviews = 0;
+
+          reviews.forEach((review) => {
+            if (review.productId === product.id) {
+              sumRating += review.rating;
+              numberOfReviews++;
+            }
+          });
+
+          const avgProductRating = sumRating / numberOfReviews;
+          // if (avgRating >= avgView) return product;
+          return avgProductRating >= avgRating;
+        });
+      }
+    }
+
     return products;
   },
   product: (parent, { id }, { products }) => {

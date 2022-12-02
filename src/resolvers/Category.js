@@ -1,7 +1,16 @@
 export const Category = {
-  // products: (parent, args, { products }) => {
   products: ({ id }, args, { products }) => {
-    // const { id } = parent;
-    return products.filter((product) => product.categoryId == id);
+    let filter = args.filter;
+
+    // 1 we filtered products to categoryId
+    // 2 we filtered products to onsale = true
+
+    products = products.filter((product) => product.categoryId == id);
+
+    if (filter && filter.onSale === true) {
+      products = products.filter((product) => product.onSale === true);
+    }
+
+    return products;
   },
 };
