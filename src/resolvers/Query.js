@@ -1,14 +1,14 @@
-import { products, categories } from '../db/db.js';
-
 export const Query = {
-  products: () => {
+  products: (parent, args, { products }) => {
     return products;
   },
-  product: (parent, args, context) => {
-    return products.find((product) => product.id == args.id);
+  product: (parent, { id }, { products }) => {
+    return products.find((product) => product.id == id);
   },
-  categories: () => categories,
-  category: (parent, args) => {
-    return categories.find((category) => category.id == args.id);
+  categories: (parent, args, { categories }) => {
+    return categories;
+  },
+  category: (parent, { id }, { categories }) => {
+    return categories.find((category) => category.id == id);
   },
 };

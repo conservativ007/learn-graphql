@@ -6,6 +6,8 @@ import { Query } from '../resolvers/Query.js';
 import { Product } from '../resolvers/Product.js';
 import { Category } from '../resolvers/Category.js';
 
+import { products, categories } from '../db/db.js';
+
 //string, Int, Float, Boolean - this is a scalar type
 
 const server = new ApolloServer({
@@ -14,6 +16,10 @@ const server = new ApolloServer({
     Query,
     Product,
     Category,
+  },
+  context: {
+    products,
+    categories,
   },
 });
 

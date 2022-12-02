@@ -1,8 +1,7 @@
-import { products } from '../db/db.js';
-
 export const Category = {
-  products: (parent, args, context) => {
-    const { id } = parent;
+  // products: (parent, args, { products }) => {
+  products: ({ id }, args, { products }) => {
+    // const { id } = parent;
 
     let testArr = [];
 
