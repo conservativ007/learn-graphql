@@ -11,4 +11,9 @@ export const Query = {
   category: (parent, { id }, { categories }) => {
     return categories.find((category) => category.id == id);
   },
+  reviews: (parent, args, { reviews }) => {
+    return reviews;
+  },
 };
+
+// here is show how use the global query
