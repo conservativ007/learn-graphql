@@ -1,11 +1,11 @@
 export const Category = {
-  products: ({ id }, args, { products }) => {
+  products: ({ id }, args, { db }) => {
     let filter = args.filter;
 
     // 1 we filtered products to categoryId
     // 2 we filtered products to onsale = true
 
-    products = products.filter((product) => product.categoryId == id);
+    let products = db.products.filter((product) => product.categoryId == id);
 
     if (filter && filter.onSale === true) {
       products = products.filter((product) => product.onSale === true);

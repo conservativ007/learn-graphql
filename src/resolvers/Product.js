@@ -1,11 +1,11 @@
 export const Product = {
   // category: (parent, args, { categories }) => {
-  category: ({ categoryId }, args, { categories }) => {
+  category: ({ categoryId }, args, { db }) => {
     // const categoryId = parent.categoryId;
-    return categories.find((category) => category.id == categoryId);
+    return db.categories.find((category) => category.id == categoryId);
   },
-  review: ({ id }, args, { reviews }) => {
-    return reviews.filter((elem) => elem.productId === id);
+  review: ({ id }, args, { db }) => {
+    return db.reviews.filter((elem) => elem.productId === id);
   },
 };
 

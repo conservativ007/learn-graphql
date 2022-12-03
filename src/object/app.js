@@ -7,7 +7,9 @@ import { Product } from '../resolvers/Product.js';
 import { Category } from '../resolvers/Category.js';
 import { Mutation } from '../resolvers/Mutation.js';
 
-import { products, categories, reviews } from '../db/db.js';
+import { products, categories, reviews, db } from '../db/db.js';
+
+console.log(db);
 
 //string, Int, Float, Boolean - this is a scalar type
 
@@ -20,9 +22,10 @@ const server = new ApolloServer({
     Mutation,
   },
   context: {
-    products,
-    categories,
-    reviews,
+    // products,
+    // categories,
+    // reviews,
+    db,
   },
 });
 
