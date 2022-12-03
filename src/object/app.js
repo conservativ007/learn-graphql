@@ -5,6 +5,7 @@ import { typeDefs } from '../schema.js';
 import { Query } from '../resolvers/Query.js';
 import { Product } from '../resolvers/Product.js';
 import { Category } from '../resolvers/Category.js';
+import { Mutation } from '../resolvers/Mutation.js';
 
 import { products, categories, reviews } from '../db/db.js';
 
@@ -16,6 +17,7 @@ const server = new ApolloServer({
     Query,
     Product,
     Category,
+    Mutation,
   },
   context: {
     products,

@@ -1,8 +1,5 @@
 export const Query = {
   products: (parent, { filter }, { products, reviews }) => {
-    // console.log(filter);
-    console.log(reviews);
-
     if (filter) {
       const { onSale, avgRating } = filter;
 
@@ -23,7 +20,6 @@ export const Query = {
           });
 
           const avgProductRating = sumRating / numberOfReviews;
-          // if (avgRating >= avgView) return product;
           return avgProductRating >= avgRating;
         });
       }
